@@ -71,21 +71,45 @@ class Solution
         
         st.push(i);
     }
-    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
-    {
-        Stack<Integer> st = new Stack<>();
-        int[] vis = new int[V];
-        for(int i=0; i<V; i++){
-            if(vis[i] != 1){
-                dfs(adj, vis, i, st);
-            }
+    
+    private static void bfs(ArrayList<ArrayList<Integer>> adj, int[] indeg, int[] ans){
+        int n = ans.length, ansi=0;
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=0; i<n; i++){
+            if(indeg[i] == 0) q.add(i);
         }
         
-        int ans[] = new int[st.size()];
-        int i=0;
-        while(st.isEmpty() == false){
-            ans[i++] = st.pop();
+        while(!q.isEmpty()){
+            int t = q.poll();
+            for(Integer i: adj.get(t)){
+                if(--indeg[i] == 0) q.add(i);
+            }
+            
+            ans[ansi++] = t;
         }
+    }
+    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    {
+        // Stack<Integer> st = new Stack<>();
+        // int[] vis = new int[V];
+        // for(int i=0; i<V; i++){
+        //     if(vis[i] != 1){
+        //         dfs(adj, vis, i, st);
+        //     }
+        // }
+        int[] indeg =  new int[V];
+        for(int i=0; i< adj.size(); i++){
+            for(int j=0; j<adj.get(i).size(); j++){
+                indeg[adj.get(i).get(j)]++;
+            }
+        }
+        int ans[] = new int[V];
+        bfs(adj, indeg, ans);
+        
+        // int i=0;
+        // while(st.isEmpty() == false){
+        //     ans[i++] = st.pop();
+        // }
         
         return ans;
         
