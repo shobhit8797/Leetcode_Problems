@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/reverse-vowels-of-a-string/">345. Reverse Vowels of a String</a></h2><h3>Easy</h3><hr><div><p>Given a string <code>s</code>, reverse only all the vowels in the string and return it.</p>
+<h2><a href="https://leetcode.com/problems/reverse-vowels-of-a-string/solution/">345. Reverse Vowels of a String</a></h2><h3>Easy</h3><hr><div><p>Given a string <code>s</code>, reverse only all the vowels in the string and return it.</p>
 
 <p>The vowels are <code>'a'</code>, <code>'e'</code>, <code>'i'</code>, <code>'o'</code>, and <code>'u'</code>, and they can appear in both lower and upper cases, more than once.</p>
 
